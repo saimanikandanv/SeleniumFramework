@@ -57,6 +57,8 @@ public class ReadData {
 		cell=row.getCell(colNumber);	
 		testData=cell.getStringCellValue();
 //		System.out.println(testData);
+		wb.close();
+		fis.close();
 		return testData;
 	}
 }

@@ -7,9 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 
 public class BrowserHelper extends ReadData {
@@ -18,7 +18,8 @@ public class BrowserHelper extends ReadData {
 	private static String browserName,appUrl;
 	
 			
-	public static WebDriver startApplication(WebDriver driver) throws IOException
+	@BeforeTest
+	public static WebDriver startApplication() throws IOException
 	{					
 		browserName=ReadData.getProp("browserName");
 		appUrl=ReadData.getProp("URL");	
@@ -44,8 +45,10 @@ public class BrowserHelper extends ReadData {
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		return driver;
-	}		
-	public static void exitApplication(WebDriver driver)
+	}	
+	
+	@AfterTest
+	public static void exitApplication()
 	{
 		driver.quit();
 	}

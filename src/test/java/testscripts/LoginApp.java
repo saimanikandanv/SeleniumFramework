@@ -7,24 +7,24 @@ import org.testng.annotations.Test;
 
 import junit.framework.Assert;
 import pages.FlipkartPage;
-import utilities.BaseClass;
+import utilities.BrowserHelper;
 import utilities.ReadData;
 
-public class LoginApp extends BaseClass {
+public class LoginApp extends BrowserHelper {
 	
 	static FlipkartPage flipkartApp;
 	
 	@Test(priority = 1)
 	public void checkURL()
 	{
-		String curentURL = ldriver.getTitle();
+		String curentURL = driver.getTitle();
 		Assert.assertEquals("Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!", curentURL);
 	}
 	
 	@Test(dependsOnMethods = {"checkURL"})
 	public void Login() throws IOException
 	{	
-		flipkartApp=PageFactory.initElements(ldriver, FlipkartPage.class);
+		flipkartApp=PageFactory.initElements(driver, FlipkartPage.class);
 		flipkartApp.loginApp(ReadData.readExcelData("LoginDetails", "UserId"),ReadData.readExcelData("LoginDetails", "Password"));
 		Assert.assertEquals(ReadData.readExcelData("LoginDetails", "UserName"), flipkartApp.lblUserId.getText());
 	}

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.DemoUtils;
+
 public class FlipkartPage {
 	
 	public WebDriver pdriver;
@@ -44,8 +46,6 @@ public class FlipkartPage {
 	
 	public void loginApp(String uname, String pass)
 	{
-		btnclose.click();
-		btnlnkLogin.click();
 		txtUserName.sendKeys(uname);
 		txtPassword.sendKeys(pass);
 		btnLogin.click();
