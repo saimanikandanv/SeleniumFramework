@@ -59,7 +59,8 @@ public class FlipkartPage {
 	{
 		Boolean strTextflag=false;
 		String actual=lblsrchResults.getText().trim().replaceAll("\\s", "");
-		if(actual.contains(ExpectedText))
+		String Expected=ExpectedText.replaceAll("\\s", "");
+		if(actual.contains(Expected))
 		{
 			strTextflag=true;
 		}
